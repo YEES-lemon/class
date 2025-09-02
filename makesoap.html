@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>천연 CP비누 만들기 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F0F3BD;
+            color: #6A6B4F;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #B2C98A;
+            margin: 0 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#6A6B4F] mb-2">천연 CP비누 만들기</h1>
+            <p class="text-lg text-[#7E9F76]">나만의 비누를 만드는 여정</p>
+        </header>
+        
+        <section id="safety" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8">1. 안전 수칙</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white/70 rounded-lg shadow-lg p-6">
+                    <div class="text-6xl mb-4 text-center">👓</div>
+                    <h3 class="text-xl font-bold mb-2 text-center">보호 장비 착용</h3>
+                    <p class="text-gray-700 text-left"><strong>가성소다는 위험한 화학물질입니다!</strong> <br>보안경, 고무장갑, 앞치마, 긴팔 옷을 반드시 착용하세요.</p>
+                </div>
+                <div class="bg-white/70 rounded-lg shadow-lg p-6">
+                    <div class="text-6xl mb-4 text-center">🌬️</div>
+                    <h3 class="text-xl font-bold mb-2 text-center">환기 필수</h3>
+                    <p class="text-gray-700 text-left"><strong>유독가스가 발생합니다!</strong> <br>창문을 활짝 열고 통풍이 잘 되는 곳에서 작업하세요.</p>
+                </div>
+                <div class="bg-white/70 rounded-lg shadow-lg p-6">
+                    <div class="text-6xl mb-4 text-center">💧</div>
+                    <h3 class="text-xl font-bold mb-2 text-center">혼합 순서 엄수</h3>
+                    <p class="text-gray-700 text-left"><strong>물(얼음)에 가성소다를 넣기!</strong> <br>반드시 이 순서로 천천히 녹여주세요. <br>가성소다에 물을 부으면 위험합니다.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ingredients" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8">2. 재료 준비</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white/70 rounded-lg shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-center">오일 배합 (총 800g)</h3>
+                    <p class="text-gray-700 mb-4 text-left">
+                        <strong>올리브오일</strong>은 보습력을 높여줍니다. 
+                        <br><strong>코코넛오일</strong>은 풍성한 거품을 만들어 줍니다.
+                        <br><strong>팜오일</strong>은 비누를 단단하게 만들어줍니다.</p>
+                    <div class="chart-container">
+                        <canvas id="oilChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white/70 rounded-lg shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-center">기타 재료</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-center"><span class="text-2xl mr-4">🧪</span><div><strong>화학 재료</strong><p class="text-sm text-gray-600 text-left">가성소다 (113g), 정제수 (272g)</p></div></li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">🌿</span><div><strong>첨가물</strong><p class="text-sm text-gray-600 text-left">에센셜 오일, 보리순 분말</p></div></li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">🛠️</span><div><strong>도구</strong><p class="text-sm text-gray-600 text-left">스텐볼, 몰드, 저울, 온도계, 핸드블렌더 등</p></div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="process" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8">3. 만드는 순서</h2>
+            <div class="bg-white/70 rounded-lg shadow-lg p-6 md:p-8">
+                <div class="relative">
+                    <div class="border-l-4 border-[#B2C98A] absolute h-full top-0 left-4"></div>
+                    <div class="mb-8 pl-12 relative">
+                        <div class="absolute w-8 h-8 bg-[#7E9F76] rounded-full -left-4 border-4 border-white/70 text-white flex items-center justify-center font-bold">1</div>
+                        <h4 class="font-bold text-xl mb-1 text-left">재료 계량</h4>
+                        <p class="text-gray-700 text-left">
+                            <strong>정제수(272g)</strong>는 미리 1시간 정도 얼려서 준비하고,
+                            <br><strong>오일은 올리브오일(440g), 코코넛오일(200g), 팜오일(160g)</strong>을 정확히 계량합니다.
+                            <br><strong>가성소다(113g, 5% 디스카운트)</strong>도 정확히 계량하여 따로 준비하세요.
+                        </p>
+                    </div>
+                    <!-- 이미지를 재료 계량 아래로 이동 -->
+                    <div class="mb-8 pl-12 flex flex-wrap justify-center gap-4">
+                        <img src="https://jubangtong.com/web/product/big/202407/83ef2cfff336b73108b8f743b06b4ea7.jpg" alt="스텐 용기" class="w-1/5 h-auto rounded-lg object-cover">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSTYFGbO8qRKaS9AEe9acq80e1zq-bQ0ciQ&s" alt="올리브 오일" class="w-1/5 h-auto rounded-lg object-cover">
+                        <img src="data:image/jpeg;base64,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" alt="코코넛 오일" class="w-1/5 h-auto rounded-lg object-cover">
+                        <img src="https://media.istockphoto.com/id/489660706/ko/%EC%82%AC%EC%A7%84/%EC%97%94%EC%A7%84%EC%98%A4%EC%9D%BC-%ED%8C%9C%ED%98%95-%EA%B3%BC%EC%9D%BC%EC%9D%84-%EC%9A%94%EB%A6%AC%EC%9A%94-%EC%97%94%EC%A7%84%EC%98%A4%EC%9D%BC.jpg?s=612x612&w=0&k=20&c=HpEJpit1KS85vjtqOHUu2gXyTqpa9l4fniaz9NRnufs=" alt="팜 오일" class="w-1/5 h-auto rounded-lg object-cover">
+                    </div>
+                    <div class="mb-8 pl-12 relative">
+                        <div class="absolute w-8 h-8 bg-[#7E9F76] rounded-full -left-4 border-4 border-white/70 text-white flex items-center justify-center font-bold">2</div>
+                        <h4 class="font-bold text-xl mb-1 text-left">용액 만들기 및 가열</h4>
+                        <p class="text-gray-700 text-left">
+                            얼은 정제수에 가성소다를 조금씩 부어 녹여 용액을 만듭니다. (이때 유독가스가 발생하니 환기가 필수입니다.)
+                            <br>준비된 오일을 40~50°C로 데워 가성소다 용액과 같은 온도로 맞춰줍니다.
+                            <br>오일을 데울 때는 전자레인지를 이용해도 됩니다.
+                        </p>
+                    </div>
+                    <div class="mb-8 pl-12 relative">
+                        <div class="absolute w-8 h-8 bg-[#7E9F76] rounded-full -left-4 border-4 border-white/70 text-white flex items-center justify-center font-bold">3</div>
+                        <h4 class="font-bold text-xl mb-1 text-left">혼합 및 트레이스</h4>
+                        <p class="text-gray-700 text-left">40~50°C 정도의 비슷한 온도의 오일과 가성소다액을 섞어 줍니다.
+                            <br> 핸드블렌더로 걸쭉한 크림 상태<strong>(트레이스)</strong>가 될 때까지 섞어 줍니다.</p>
+                    </div>
+                     <div class="mb-8 pl-12 relative">
+                        <div class="absolute w-8 h-8 bg-[#7E9F76] rounded-full -left-4 border-4 border-white/70 text-white flex items-center justify-center font-bold">4</div>
+                        <h4 class="font-bold text-xl mb-1 text-left">첨가물 추가</h4>
+                        <p class="text-gray-700 text-left">트레이스 상태가 되면 <strong>에센셜 오일(20ml)</strong>과 <strong>보리순 분말(10g)</strong>을 넣고 가볍게 섞어줍니다.</p>
+                    </div>
+                    <div class="mb-8 pl-12 relative">
+                        <div class="absolute w-8 h-8 bg-[#7E9F76] rounded-full -left-4 border-4 border-white/70 text-white flex items-center justify-center font-bold">5</div>
+                        <h4 class="font-bold text-xl mb-1 text-left">몰드에 붓기</h4>
+                        <p class="text-gray-700 text-left">완성된 비누액을 몰드에 붓고, 뚜껑을 덮은 후 24~48시간 동안 스티로폼 박스에 넣고 보온합니다.</p>
+                    </div>
+                    <div class="pl-12 relative">
+                        <div class="absolute w-8 h-8 bg-[#7E9F76] rounded-full -left-4 border-4 border-white/70 text-white flex items-center justify-center font-bold">6</div>
+                        <h4 class="font-bold text-xl mb-1 text-left">숙성 및 커팅</h4>
+                        <p class="text-gray-700 text-left">굳은 비누를 자른 후, 4~6주 동안 통풍이 잘 되는 곳에서 숙성시켜 완성합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="science" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8">4. 숙성 과정</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-white/70 rounded-lg shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-2 text-center">핵심 온도</h3>
+                    <p class="text-6xl font-bold text-[#7E9F76] my-4 text-center">40-50<span class="text-4xl align-top">°C</span></p>
+                    <p class="text-gray-700 text-left">비누화 반응이 가장 이상적으로 일어나는 온도를 유지하는 것이 중요합니다.</p>
+                </div>
+                <div class="bg-white/70 rounded-lg shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-center">pH 농도 변화</h3>
+                     <p class="text-gray-700 mb-4 text-left">숙성 기간 동안 비누의 pH는 점차 낮아져 피부에 사용하기 안전한 상태가 됩니다.</p>
+                    <div class="chart-container h-64 md:h-72">
+                        <canvas id="phChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="text-center mt-12 pt-8 border-t border-[#B2C98A]">
+            <p class="text-[#6A6B4F]">안전하고 즐거운 비누 만들기 체험을 응원합니다!</p>
+            <a href="https://youtu.be/0_xuZnEdIT8?si=CPjkdvB3O2S_iRSp" target="_blank" class="text-sm text-[#7E9F76] hover:underline mt-2 inline-block">만들기 영상 보러가기</a>
+        </footer>
+        
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+        
+        // Register the datalabels plugin with Chart.js
+        Chart.register(ChartDataLabels);
+
+        const oilChartCtx = document.getElementById('oilChart').getContext('2d');
+        new Chart(oilChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [['올리브오일', '440g'], ['코코넛오일', '200g'], ['팜오일', '160g']],
+                datasets: [{
+                    label: '오일 배합',
+                    data: [440, 200, 160],
+                    backgroundColor: [
+                        '#7E9F76',
+                        '#B2C98A',
+                        '#D8E1A3'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    },
+                    datalabels: {
+                        color: '#FFFFFF',
+                        formatter: (value, context) => {
+                            return context.chart.data.labels[context.dataIndex];
+                        },
+                        textAlign: 'center',
+                        font: {
+                            weight: 'bold',
+                            size: 20
+                        },
+                        // Add border to the text
+                        textStrokeColor: '#6A6B4F',
+                        textStrokeWidth: 2
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+ const phChartCtx = document.getElementById('phChart').getContext('2d');
+        new Chart(phChartCtx, {
+            type: 'line',
+            data: {
+                labels: ['0주', '1주', '2주', '3주', '4주', '5주', '6주'],
+                datasets: [{
+                    label: 'pH 농도 변화',
+                    data: [13, 12, 11.2, 10.5, 10, 9.6, 9.2],
+                    fill: true,
+                    backgroundColor: 'rgba(126, 159, 118, 0.2)',
+                    borderColor: '#7E9F76',
+                    tension: 0.3,
+                    pointBackgroundColor: '#6A6B4F',
+                    pointRadius: 3, // 점 크기 줄임
+                    pointHoverRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+			max: 14,
+                        title: {
+                            display: true,
+                            text: 'pH Level'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '숙성 기간 (주)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        offset: 6,
+                        font: {
+                            size: 15
+                        },
+                        color: '#556B2F'
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+    </script>
+</body>
+</html>
